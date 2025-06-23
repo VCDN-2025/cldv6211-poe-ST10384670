@@ -4,38 +4,96 @@
     ViewData["Title"] = "All Bookings";
 }
 
-<h2>All Bookings</h2>
+<style>
+    body {
+        background-color: #e0f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<p>
-    <a asp-action="Create" class="btn btn-success">+ New Booking</a>
-</p>
+    h2 {
+        color: #00bcd4;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Client Name</th>
-            <th>Email</th>
-            <th>Guests</th>
-            <th>Event</th>
-            <th>Venue</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var booking in Model)
-        {
-            <tr>
-                <td>@booking.ClientName</td>
-                <td>@booking.ClientEmail</td>
-                <td>@booking.NumberOfGuests</td>
-                <td>@booking.Event?.Title</td>
-                <td>@booking.Venue?.Name</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@booking.BookingId" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-action="Details" asp-route-id="@booking.BookingId" class="btn btn-sm btn-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@booking.BookingId" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
+    .btn-success, .btn-warning, .btn-info, .btn-danger {
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .btn-success {
+        background-color: #00acc1;
+        border-color: #00acc1;
+    }
+
+        .btn-success:hover {
+            background-color: #0097a7;
+            border-color: #0097a7;
         }
-    </tbody>
-</table>
+
+    table {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background-color: #00bcd4;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr:hover {
+        background-color: #f1faff;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2>All Bookings</h2>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">+ New Booking</a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Guests</th>
+                <th>Event</th>
+                <th>Venue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.ClientName</td>
+                    <td>@booking.ClientEmail</td>
+                    <td>@booking.NumberOfGuests</td>
+                    <td>@booking.Event?.Title</td>
+                    <td>@booking.Venue?.Name</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@booking.BookingId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@booking.BookingId" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@booking.BookingId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

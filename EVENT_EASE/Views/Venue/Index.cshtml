@@ -12,14 +12,104 @@
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #004d40;
     }
 
     .card {
-        background-color: rgba(255, 255, 255, 0.95); /* semi-transparent white */
+        background-color: rgba(224, 247, 250, 0.95); /* soft cyan with transparency */
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
     }
 
-    h1, th {
-        color: #007bff;
+    h1 {
+        color: #00acc1;
+        font-weight: 700;
+    }
+
+    table {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 172, 193, 0.2);
+    }
+
+    thead {
+        background-color: #00acc1;
+        color: white;
+        font-weight: 700;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    tbody tr:hover {
+        background-color: #e0f7fa;
+    }
+
+    .badge.bg-success {
+        background-color: #26a69a;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .badge.bg-danger {
+        background-color: #d32f2f;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .btn-sm {
+        border-radius: 6px;
+        font-weight: 600;
+        padding: 6px 12px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-warning {
+        background-color: #ffb300;
+        border-color: #ffb300;
+        color: black;
+    }
+
+        .btn-warning:hover {
+            background-color: #e6a700;
+            border-color: #e6a700;
+            color: black;
+        }
+
+    .btn-primary {
+        background-color: #00acc1;
+        border-color: #00acc1;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0097a7;
+            border-color: #0097a7;
+            color: white;
+        }
+
+    .btn-danger {
+        background-color: #e53935;
+        border-color: #e53935;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #d32f2f;
+            border-color: #d32f2f;
+            color: white;
+        }
+
+    .img-thumbnail {
+        max-width: 100px;
+        height: auto;
+        border-radius: 8px;
+        border: 2px solid #00acc1;
     }
 </style>
 
@@ -37,7 +127,7 @@
                     <th>@Html.DisplayNameFor(model => model.First().Location)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Capacity)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Description)</th>
-                    <th>Availability</th> <!-- Add this -->
+                    <th>Availability</th>
                     <th>Image</th>
                     <th>Actions</th>
                 </tr>
@@ -63,7 +153,7 @@
                         <td>
                             @if (!string.IsNullOrEmpty(item.ImageUrl))
                             {
-                                <img src="@item.ImageUrl" alt="Venue Image" style="width: 100px; height: auto;" class="img-thumbnail" />
+                                <img src="@item.ImageUrl" alt="Venue Image" class="img-thumbnail" />
                             }
                             else
                             {
@@ -78,8 +168,6 @@
                     </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </div>
-

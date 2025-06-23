@@ -262,6 +262,7 @@ C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\EVENT_EASE.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\EVENT_EASE.RazorAssemblyInfo.cache
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\EVENT_EASE.RazorAssemblyInfo.cs
+C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\EVENT_EASE.sourcelink.json
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\scopedcss\bundle\EVENT_EASE.styles.css
 C:\Users\lab_services_student\source\repos\EVENT_EASE\EVENT_EASE\obj\Debug\net8.0\scopedcss\projectbundle\EVENT_EASE.bundle.scp.css

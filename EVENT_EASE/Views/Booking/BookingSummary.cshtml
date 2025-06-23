@@ -4,63 +4,118 @@
     ViewData["Title"] = "Booking Summary";
 }
 
-<h2 class="mb-4">Booking Summary</h2>
+<style>
+    body {
+        background-color: #e0f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<form method="get" class="row g-3 mb-4">
-    <div class="col-md-2">
-        <input name="searchBookingId" class="form-control" placeholder="Booking ID" />
-    </div>
-    <div class="col-md-2">
-        <input name="searchEventType" class="form-control" placeholder="Event Type" />
-    </div>
-    <div class="col-md-2">
-        <input name="searchEventName" class="form-control" placeholder="Event Name" />
-    </div>
-    <div class="col-md-2">
-        <select name="searchAvailability" class="form-select">
-            <option value="">-- Availability --</option>
-            <option value="true">Available</option>
-            <option value="false">Not Available</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <input type="date" name="startDate" class="form-control" />
-    </div>
-    <div class="col-md-2">
-        <input type="date" name="endDate" class="form-control" />
-    </div>
-    <div class="col-md-12 mt-2">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-</form>
+    h2 {
+        color: #00bcd4;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-<table class="table table-bordered table-striped">
-    <thead class="table-light">
-        <tr>
-            <th>Booking ID</th>
-            <th>Client Name</th>
-            <th>Booking Date</th>
-            <th>Event Name</th>
-            <th>Event Type</th>
-            <th>Event Date</th>
-            <th>Venue</th>
-            <th>Availability</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var booking in Model)
-        {
-            <tr>
-                <td>@booking.BookingId</td>
-                <td>@booking.ClientName</td>
-                <td>@(booking.BookingDate?.ToString("yyyy-MM-dd"))</td>
-                <td>@booking.Event?.Title</td>
-                <td>@(booking.Event?.EventType?.Name ?? "N/A")</td>
-                <td>@booking.Event?.Date?.ToString("yyyy-MM-dd")</td>
+    .btn-primary {
+        background-color: #00acc1;
+        border-color: #00acc1;
+        font-weight: bold;
+        border-radius: 5px;
+    }
 
-                <td>@booking.Venue?.Name</td>
-                <td>@(booking.Venue?.IsAvailable == true ? "Available" : "Not Available")</td>
-            </tr>
+        .btn-primary:hover {
+            background-color: #0097a7;
+            border-color: #0097a7;
         }
-    </tbody>
-</table>
+
+    .form-control, .form-select {
+        border: 2px solid #00acc1;
+        border-radius: 5px;
+    }
+
+    table {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background-color: #00bcd4;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr:hover {
+        background-color: #f1faff;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Booking Summary</h2>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-2">
+            <input name="searchBookingId" class="form-control" placeholder="Booking ID" />
+        </div>
+        <div class="col-md-2">
+            <input name="searchEventType" class="form-control" placeholder="Event Type" />
+        </div>
+        <div class="col-md-2">
+            <input name="searchEventName" class="form-control" placeholder="Event Name" />
+        </div>
+        <div class="col-md-2">
+            <select name="searchAvailability" class="form-select">
+                <option value="">-- Availability --</option>
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="startDate" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="endDate" class="form-control" />
+        </div>
+        <div class="col-md-12 mt-2">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Client Name</th>
+                <th>Booking Date</th>
+                <th>Event Name</th>
+                <th>Event Type</th>
+                <th>Event Date</th>
+                <th>Venue</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.BookingId</td>
+                    <td>@booking.ClientName</td>
+                    <td>@(booking.BookingDate?.ToString("yyyy-MM-dd"))</td>
+                    <td>@booking.Event?.Title</td>
+                    <td>@(booking.Event?.EventType?.Name ?? "N/A")</td>
+                    <td>@booking.Event?.Date?.ToString("yyyy-MM-dd")</td>
+                    <td>@booking.Venue?.Name</td>
+                    <td>@(booking.Venue?.IsAvailable == true ? "Available" : "Not Available")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

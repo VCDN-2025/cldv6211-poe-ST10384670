@@ -4,44 +4,110 @@
     ViewData["Title"] = "Create Booking";
 }
 
-<h2>Create Booking</h2>
+<style>
+    body {
+        background-color: #e0f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<form asp-action="Create" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    .booking-form-container {
+        max-width: 700px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
+    }
 
-    <div class="form-group">
-        <label asp-for="ClientName" class="control-label"></label>
-        <input asp-for="ClientName" class="form-control" />
-        <span asp-validation-for="ClientName" class="text-danger"></span>
+    h2 {
+        color: #00796b;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #004d40;
+    }
+
+    .btn-primary {
+        background-color: #00acc1;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #00838f;
+        }
+
+    .btn-secondary {
+        background-color: #b2ebf2;
+        border: none;
+        color: #004d40;
+    }
+
+        .btn-secondary:hover {
+            background-color: #80deea;
+        }
+
+    .text-danger {
+        font-size: 0.9rem;
+    }
+
+    .required-note {
+        color: #d32f2f;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
+
+<div class="booking-form-container">
+    <h2>Create Booking</h2>
+
+    <div class="required-note">
+        Please note: <strong>Client Name</strong> is a required field.
     </div>
 
-    <div class="form-group">
-        <label asp-for="ClientEmail" class="control-label"></label>
-        <input asp-for="ClientEmail" class="form-control" />
-        <span asp-validation-for="ClientEmail" class="text-danger"></span>
-    </div>
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-    <div class="form-group">
-        <label asp-for="NumberOfGuests" class="control-label"></label>
-        <input asp-for="NumberOfGuests" class="form-control" />
-        <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="ClientName" class="control-label">Client Name</label>
+            <input asp-for="ClientName" class="form-control" />
+            <span asp-validation-for="ClientName" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Event" class="control-label"></label>
-        <select asp-for="EventId" class="form-control" asp-items="ViewBag.EventId"></select>
-        <span asp-validation-for="EventId" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="ClientEmail" class="control-label">Client Email</label>
+            <input asp-for="ClientEmail" class="form-control" />
+            <span asp-validation-for="ClientEmail" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Venue" class="control-label"></label>
-        <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId"></select>
-        <span asp-validation-for="VenueId" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="NumberOfGuests" class="control-label">Number of Guests</label>
+            <input asp-for="NumberOfGuests" class="form-control" />
+            <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+        <div class="form-group mb-3">
+            <label asp-for="Event" class="control-label">Select Event</label>
+            <select asp-for="EventId" class="form-control" asp-items="ViewBag.EventId"></select>
+            <span asp-validation-for="EventId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label asp-for="Venue" class="control-label">Select Venue</label>
+            <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId"></select>
+            <span asp-validation-for="VenueId" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary shadow-sm px-4">Create</button>
+            <a asp-action="Index" class="btn btn-secondary shadow-sm px-4">Cancel</a>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{
