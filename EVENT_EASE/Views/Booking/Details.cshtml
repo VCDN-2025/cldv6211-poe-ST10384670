@@ -1,0 +1,33 @@
+﻿@model EVENT_EASE.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-info">
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0">Booking Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 fw-semibold">Client Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ClientName)</dd>
+
+                <dt class="col-sm-3 fw-semibold">Client Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ClientEmail)</dd>
+
+                <dt class="col-sm-3 fw-semibold">Number of Guests</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NumberOfGuests)</dd>
+
+                <dt class="col-sm-3 fw-semibold">Event</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Event.EventId)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-outline-secondary">← Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model?.BookingId" class="btn btn-primary">✏️ Edit Booking</a>
+        </div>
+    </div>
+</div>
+

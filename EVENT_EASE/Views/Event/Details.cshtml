@@ -1,0 +1,84 @@
+@model EVENT_EASE.Models.Event
+
+@{
+    ViewData["Title"] = "Event Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .details-card {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 3rem;
+    }
+
+    .details-title {
+        color: #0d6efd;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    dt {
+        color: #495057;
+        font-weight: 600;
+    }
+
+    dd {
+        color: #343a40;
+    }
+
+    .event-image {
+        display: block;
+        margin: 1rem auto;
+        max-width: 300px;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        margin-right: 0.5rem;
+    }
+</style>
+
+<div class="container">
+    <div class="details-card col-md-8 mx-auto">
+        <h1 class="details-title mb-4">Event Details</h1>
+
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Title)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Date)</dt>
+            <dd class="col-sm-9">@Model.Date?.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Time)</dt>
+            <dd class="col-sm-9">@Model.Time?.ToString("hh\\:mm")</dd>
+
+            <dt class="col-sm-3">Venue</dt>
+            <dd class="col-sm-9">@Model.Venue?.Name</dd>
+
+            <dt class="col-sm-3">Image</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="Event Image" class="event-image" />
+                }
+                else
+                {
+                    <span class="text-muted">No image available</span>
+                }
+            </dd>
+        </dl>
+
+        <div class="mt-4 text-center">
+            <a asp-action="Edit" asp-route-id="@Model?.EventId" class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+@model IEnumerable<EVENT_EASE.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venues";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('/images/background.jpg'); /* Replace with your own image path */
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.95); /* semi-transparent white */
+    }
+
+    h1, th {
+        color: #007bff;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold">Venues</h1>
+            <a asp-action="Create" class="btn btn-info text-white shadow-sm">+ Create New Venue</a>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead class="table-info text-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Location)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Capacity)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+                    <th>Availability</th> <!-- Add this -->
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Capacity)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>
+                            @if (item.IsAvailable)
+                            {
+                                <span class="badge bg-success">Available</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Unavailable</span>
+                            }
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="@item.ImageUrl" alt="Venue Image" style="width: 100px; height: auto;" class="img-thumbnail" />
+                            }
+                            else
+                            {
+                                <span class="text-muted">No image</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.VenueId" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.VenueId" class="btn btn-sm btn-primary">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.VenueId" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

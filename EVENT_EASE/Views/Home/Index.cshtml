@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "EventEase Admin Portal";
+}
+
+<!-- 👇 Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+    body {
+        background-color: #e0f7fa;
+    }
+
+    .hero-section {
+        background: linear-gradient(to right, #00bcd4, #0097a7);
+        color: white;
+        padding: 60px 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .card-custom {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+        background-color: white;
+    }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+    .btn-custom {
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+
+    .search-bar {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .search-input {
+        width: 300px;
+        padding: 10px 15px;
+        border: 2px solid #00acc1;
+        border-radius: 30px;
+        outline: none;
+    }
+
+    .search-icon {
+        color: #00acc1;
+        margin-left: -35px;
+        cursor: pointer;
+        font-size: 18px;
+        background: none;
+        border: none;
+    }
+
+    .card-img-top {
+        max-height: 180px;
+        object-fit: cover;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="hero-section">
+        <h1 class="display-4">Welcome to <strong>EventEase Admin</strong></h1>
+        <p class="lead">Effortlessly manage venues, events, and bookings.</p>
+
+        <!-- 🔍 Search Form -->
+        <form asp-controller="Event" asp-action="Search" method="get" class="search-bar d-flex justify-content-center align-items-center">
+            <input class="search-input" type="text" name="query" placeholder="Search events..." />
+            <button type="submit" class="search-icon" title="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 mt-3">
+            <div class="card card-custom border-info text-center shadow-sm">
+                <img src="https://images.unsplash.com/photo-1582719478250-c8916b5bba17" class="card-img-top" alt="Venue">
+                <div class="card-body">
+                    <h2 class="text-info">@ViewBag.VenueCount</h2>
+                    <p class="card-text">Registered Venues</p>
+                    <a href="/Venue" class="btn btn-outline-info btn-custom">Manage Venues</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
+            <div class="card card-custom border-info text-center shadow-sm">
+                <img src="https://images.unsplash.com/photo-1602781974608-9c33b80e1a3b" class="card-img-top" alt="Event">
+                <div class="card-body">
+                    <h2 class="text-info">@ViewBag.EventCount</h2>
+                    <p class="card-text">Scheduled Events</p>
+                    <a href="/Event" class="btn btn-outline-info btn-custom">Manage Events</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
+            <div class="card card-custom border-info text-center shadow-sm">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" class="card-img-top" alt="Booking">
+                <div class="card-body">
+                    <h2 class="text-info">@ViewBag.BookingCount</h2>
+                    <p class="card-text">Active Bookings</p>
+                    <a href="/Booking" class="btn btn-outline-info btn-custom">Manage Bookings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

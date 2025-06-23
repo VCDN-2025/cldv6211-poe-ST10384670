@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EVENT_EASE.Models.Event>
+
+@{
+    ViewData["Title"] = "Events Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-primary mb-4">Events</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">+ Create New Event</a>
+</p>
+
+<table class="table table-bordered table-hover align-middle text-center">
+    <thead class="table-light">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Event Type</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Date?.ToString("yyyy-MM-dd")</td>
+                <td>@item.Time?.ToString(@"hh\:mm")</td>
+                <td>@item.Venue?.Name</td>
+                <td>@item.EventType?.Name</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" alt="Event Image" width="100" class="img-thumbnail" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">No image</span>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.EventId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.EventId" class="btn btn-sm btn-primary">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.EventId" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

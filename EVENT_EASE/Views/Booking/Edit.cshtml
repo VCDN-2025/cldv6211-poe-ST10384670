@@ -1,0 +1,62 @@
+﻿@model EVENT_EASE.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="container mt-5">
+    <div class="card shadow border-0">
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0 fw-semibold">Edit Booking</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="BookingId" />
+
+                <div class="mb-3">
+                    <label asp-for="ClientName" class="form-label fw-bold">Client Name</label>
+                    <input asp-for="ClientName" class="form-control" />
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ClientEmail" class="form-label fw-bold">Client Email</label>
+                    <input asp-for="ClientEmail" class="form-control" />
+                    <span asp-validation-for="ClientEmail" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NumberOfGuests" class="form-label fw-bold">Number of Guests</label>
+                    <input asp-for="NumberOfGuests" class="form-control" />
+                    <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="EventId" class="form-label fw-bold">Event</label>
+                    <select asp-for="EventId" class="form-select" asp-items="ViewBag.EventId"></select>
+                    <span asp-validation-for="EventId" class="text-danger"></span>
+                </div>
+
+                <!-- ✅ Add Venue Dropdown -->
+                <div class="mb-4">
+                    <label asp-for="VenueId" class="form-label fw-bold">Venue</label>
+                    <select asp-for="VenueId" class="form-select" asp-items="ViewBag.VenueId"></select>
+                    <span asp-validation-for="VenueId" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">← Back to List</a>
+                    <input type="submit" value="Save Changes" class="btn btn-info text-white shadow-sm" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
